@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Build Local Web</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#i_file").change(function(){
+		var fname = $('#i_file')[0].files[0].name;
+		if (fname != ""){
+			$('#content').css('display','none');
+			
+			$('#txt').val(fname);
+			}
+			else{
+			$('#content').css('display','block');
+			
+				}
+		var fsize = $('#i_file')[0].files[0].size;
+		var message = document.getElementById('show');
+		if (fsize>1048576){
+			message.innerHTML = 'File too large';
+			}
+			else{
+			message.innerHTML = '';
+			}
+		});
+});
+</script>
+<style>
+#txt{
+	font-weight:bold;
+	font-size:25px;
+}
+#content{
+		width:300px;
+		height:150px;
+		border:2px dotted gray;
+		border-radius:3px;
+		text-align:center;
+		padding:20px;
+	}
+.title2{
+	position:relative;
+	top:120px;
+	right:-50px;
+}
+#show{
+	position:absolute;
+	}
+	
+#btn{
+	top:370px;
+	left:10px;
+	padding:20px;
+	position:absolute;
+	}	
+</style>
+</head>
+<body>
+<div id="title"><h3>Document Name</h3></div>
+<div id="head">
+
+	<input type="text"  id="txt"  placeholder="E.g.Engineering Manager" size="20" />
+    
+</div>
+<div id="title1"><h3>Document File</h3></div>
+<div class="title2">
+<input id="i_file" type="file"  /><br/>
+<p id = "show" style="color:red"></p>
+</div>
+<div id="content">
+
+
+</div>
+<form action="#">
+<div id="foot">
+
+<input id="btn" type="button" value="SAVE" />
+
+</div>
+</form>
+</body>
+</html>

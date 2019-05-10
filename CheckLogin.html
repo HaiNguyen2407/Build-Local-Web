@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Check Login</title>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+		$(document).ready(function() {
+            $('#btn').click(function(){
+				var user = $('#User').val();
+				var pass = $('#Pass').val();
+				var email = $('#Email').val();
+				var phone = $('#Phone').val();
+				var patt = /^[a-zA-Z]+$/;
+				var result = patt.test(user);
+				var patt1 = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*]).{6,}$/;
+				var result1=patt1.test(pass);
+				var patt2 = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+				var result2 = patt2.test(email);
+				var patt3 = /^(0|\+84)(\s|\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\d)(\s|\.)?(\d{3})(\s|\.)?(\d{3})$/;
+				var result3 = patt3.test(phone);
+				if (user == ""){
+					document.getElementById('error1').innerHTML = ("Vui lòng nhập Tên");
+					return false;
+				}
+				else 
+				if(user != ""){
+					if(result == false){
+						document.getElementById('error1').innerHTML = ("Không đúng định dạng");
+						return false;
+						}
+					else if(result == true){
+						document.getElementById('error1').innerHTML = ("Oke");
+						
+						}
+				}
+					
+					
+					
+				if (pass == ""){
+					document.getElementById('error2').innerHTML = ("Vui lòng nhập Mật Khẩu");
+					return false;
+				}
+				else 
+				if(pass != ""){
+					if(result1 == false){
+						document.getElementById('error2').innerHTML = ("Mật khẩu yếu");
+						return false;
+						}
+					else if(result == true){
+						document.getElementById('error2').innerHTML = ("Good");
+						
+						}
+				}
+				
+				if (email == ""){
+					document.getElementById('error3').innerHTML = ("Vui lòng nhập email");
+					return false;
+				}
+				else 
+				if(email != ""){
+					if(result2 == false){
+						document.getElementById('error3').innerHTML = ("Sai định dạng");
+						return false;
+						}
+					else if(result2 == true){
+						document.getElementById('error3').innerHTML = ("Oke");
+						
+						}
+				}
+				if (phone == ""){
+					document.getElementById('error4').innerHTML = ("Vui lòng nhập số điện thoại");
+					return false;
+				}
+				else 
+				if(phone != ""){
+					if(result3 == false){
+						document.getElementById('error4').innerHTML = ("Sai định dạng");
+						return false;
+						}
+					else if(result3 == true){
+						document.getElementById('error4').innerHTML = ("Oke");
+						
+						}
+				}
+					return true;
+					
+				
+				
+					
+			});
+			$('#User').focus(function(){
+				document.getElementById('error1').innerHTML = ("");
+				});
+			$('#Pass').focus(function(){
+				document.getElementById('error2').innerHTML = ("");
+				});
+			$('#Email').focus(function(){
+				document.getElementById('error3').innerHTML = ("");
+				});
+			$('#Phone').focus(function(){
+				document.getElementById('error4').innerHTML = ("");
+				});
+        });
+	
+	
+</script>
+<style>
+.error{
+	color:red;	
+	text-align:center;
+	top:-70px;
+	left:115px;
+	position:relative;	
+}
+
+form {
+  box-sizing: border-box;
+  width: 260px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding-bottom: 30px;
+  border-radius: 3px;
+}
+form h1 {
+  box-sizing: border-box;
+  padding: 20px;
+  text-align:center;
+}
+input {
+  margin: 40px 25px;
+  width: 200px;
+  display: block;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px #1abc9c;
+  transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #1abc9c 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: #0e6252;
+}
+input:focus, input:valid {
+  box-shadow: none;
+  outline: none;
+  background-position: 0 0;
+}
+input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder {
+  color: #1abc9c;
+  font-size: 11px;
+  transform: translateY(-10px);
+  visibility: visible !important;
+}
+button {
+  border: none;
+  background: #1abc9c;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: 200px;
+  color: white;
+  margin-left: 25px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+}
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+</style>
+</head>
+
+<body>
+<form action="#" method="post" id = "contact" name ="contact"  >
+
+  <h1>Login</h1>
+  <input name = "User" id="User" placeholder="Username" type="text"  ><p id = "error1" class = "error"> </p>  
+  <br />
+  <input name = "Pass" id="Pass" placeholder="Password" type="password"  > 
+  <p id = "error2" class = "error"> </p> 
+   <br />
+  <input name = "Email" id="Email" placeholder="Email" type="email" >
+  <p id = "error3" class = "error"> </p> 
+   <br />
+  <input id = "Phone" name = "Phone" placeholder="Phone" type="tel"  >
+  <p id = "error4" class = "error"> </p> 
+  <br />
+  <button id="btn" name="btn">Submit</button>
+  
+</form>
+
+</body>
+</html>
+	
